@@ -12,6 +12,8 @@ module.exports = function dateSample( sampleActivity ) {
     return false;
   } else if (sampleActivity.trim() === '') {
     return false;
+  } else if (+sampleActivity <= 0 || +sampleActivity >= 15) {
+    return false;
   }
-
+  return Math.ceil( Math.log( MODERN_ACTIVITY / sampleActivity ) / ( 0.693 / HALF_LIFE_PERIOD ) );
 };
